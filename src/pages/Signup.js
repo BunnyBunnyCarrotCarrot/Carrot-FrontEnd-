@@ -7,6 +7,12 @@ import { Grids, Input, Text, Button } from '../elements/Index';
 import { FiChevronDown } from 'react-icons/fi'
 import ReactModal from "react-modal";
 
+import FormHelperText from '@material-ui/core/FormHelperText';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+
 const Signup = (props) => {
   const dispatch = useDispatch();
   const [id, setId] = useState('');
@@ -22,6 +28,14 @@ const Signup = (props) => {
     setOpen(false);
     setAdd(e.target.innerHTML);
   }
+
+  // ----------------------------------
+  const [userLocation, setUserLocation] = React.useState('');
+  console.log(userLocation)
+  
+  const handleChange = (event) => {
+    setUserLocation(event.target.value);
+  };
 
   // 제출용 버튼 함수
   const submit = () =>{
@@ -63,7 +77,7 @@ const Signup = (props) => {
       > 회원가입 </Text>
     </Grids>
 
-    <Grids width='100%' padding='16px 0 4px'>
+    <Grids width='80%' padding='16px 0 14px'>
       <Input 
       value={id}
       is_caret='#FF7E36'
@@ -76,7 +90,7 @@ const Signup = (props) => {
       />
     </Grids>
 
-    <Grids width='100%' padding='0 0 16px'>
+    <Grids width='80%' padding='0 0 14px'>
       <Input 
       value={nick}
       is_caret='#FF7E36'
@@ -89,7 +103,7 @@ const Signup = (props) => {
       />
     </Grids>
 
-    <Grids width='100%' padding='0 0 16px'>
+    <Grids width='80%' padding='0 0 14px'>
       <Input 
       value={pwd}
       is_caret='#FF7E36'
@@ -103,7 +117,7 @@ const Signup = (props) => {
       />
     </Grids>
 
-    <Grids width='100%' padding='0 0 16px'>
+    <Grids width='80%' padding='0 0 20px' >
       <Input 
       value={pwc}
       is_caret='#FF7E36'
@@ -117,11 +131,32 @@ const Signup = (props) => {
       />
     </Grids>
 
-    <Grids Border='1px solid #FF7E36' B_radius='8px' is_flex justify_content='space-between' width='100%' padding='8px 16px 8px' _onClick={()=>{setOpen(true)}}>
+    {/* <Grids Border='1px solid #FF7E36' B_radius='8px' is_flex justify_content='space-between' width='100%' padding='8px 16px 8px' _onClick={()=>{setOpen(true)}}>
       {address ? address : '지역선택'}
       <FiChevronDown />
-    </Grids>
-    <ReactModal 
+    </Grids> */}
+    <FormControl style={{width:"80%"}}>
+        <InputLabel id="demo-simple-select-helper-label">지역 선택</InputLabel>
+        <Select 
+          autoWidth
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={userLocation}
+          onChange={handleChange}
+        >
+          <MenuItem value={1}>서울특별시</MenuItem>
+          <MenuItem value={2}>울산광역시</MenuItem>
+          <MenuItem value={3}>광주광역시</MenuItem>
+          <MenuItem value={4}>인천광역시</MenuItem>
+          <MenuItem value={5}>부산광역시</MenuItem>
+          <MenuItem value={6}>대전광역시</MenuItem>
+          <MenuItem value={7}>수원시</MenuItem>
+          <MenuItem value={8}>안동시</MenuItem>
+          <MenuItem value={9}>전주시</MenuItem>
+        </Select>
+        <FormHelperText>지역을 선택해주세요.</FormHelperText>
+      </FormControl>
+    {/* <ReactModal 
         isOpen={open}
         onRequestClose={props.clearSelectedOption}
         ariaHideApp={false}
@@ -139,9 +174,9 @@ const Signup = (props) => {
           <Grids _onClick={selAdd} padding='16px 0' B_bottom='1px solid #ddd' >진주시</Grids>
           <Grids _onClick={selAdd} padding='16px 0' B_bottom='1px solid #ddd' >경주시</Grids>
           <Grids _onClick={selAdd} padding='16px 0' B_bottom='1px solid #ddd' >창원시</Grids>
-    </ReactModal>
+    </ReactModal> */}
 
-    <Grids padding='16px 0 0' width='100%'>
+    <Grids padding='16px 0 0' width='80%'>
       <Button 
       width='100%'
       height='30px'

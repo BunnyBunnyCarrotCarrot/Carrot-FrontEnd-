@@ -36,7 +36,7 @@ function App() {
   return (
     <React.Fragment>
       {/* <Containers> */}
-      <Container maxWidth="md">
+      <Container maxWidth="lg" minWidth="sm">
         <ConnectedRouter history={history}>
           <Route path="/" exact component={Start} />
           <Route path="/login" exact component={Login} />
