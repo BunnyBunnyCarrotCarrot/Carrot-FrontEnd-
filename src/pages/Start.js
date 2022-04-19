@@ -34,16 +34,16 @@ const Start = (props) => {
       </Grids>
       
       <Grids
-        position="absolute"
-        top="90%"
-        left="50%"
-        right="50%"
-        transform="translate(-50%, -50%)"
-        width="50vw"
-        padding="15px"
-        is_flex
-        flex_direction="column"
-        gap="20px"
+          position="absolute"
+          top="90%"
+          left="50%"
+          right="50%"
+          transform="translate(-50%, -50%)"
+          width="50vw"
+          padding="15px"
+          is_flex
+          flex_direction="column"
+          gap="20px"
       >
         <Grids width="100%">
           <Button

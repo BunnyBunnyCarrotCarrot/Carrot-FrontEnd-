@@ -1,13 +1,13 @@
 import React from "react";
-import test from "../images/test.jpeg";
+// import test from "../images/test.jpeg";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import styled from "styled-components";
-import { Grid } from "../elements/Index";
+import { Grids } from "../elements/Index";
 
 const DetailSlider = (props) => {
   //const { image } = props;
-  const image = [test];
+  // const image = [test];
 
   const style = {
     showArrows: false,
@@ -18,9 +18,9 @@ const DetailSlider = (props) => {
   return (
     <React.Fragment>
       <Carousel {...style}>
-        {image.map((el, i) => {
+        {/* {image.map((el, i) => {
           return <AspectInner src={el} key={i} />;
-        })}
+        })} */}
       </Carousel>
     </React.Fragment>
   );

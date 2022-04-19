@@ -7,6 +7,7 @@ import { IoNewspaperOutline, IoNewspaperSharp } from "react-icons/io5";
 import { IoLogOutOutline } from "react-icons/io5";
 import { history } from "../redux/configStore";
 import styled, { keyframes } from "styled-components";
+import { GridOffSharp } from "@material-ui/icons";
 
 const Footer = (props) => {
   return (
@@ -15,11 +16,13 @@ const Footer = (props) => {
         is_flex
         justify_content="space-around"
         position="fixed"
+        transform="translate(-50%, -60%)"
+        left="50%"
         bottom="0"
         font_size="30px"
         BG_c="white"
         width="100%"
-        height="70px"
+        height="50px"
         B_top="1px solid rgba(0,0,0,0.07)"
       >
         <Grids
@@ -30,6 +33,7 @@ const Footer = (props) => {
           flex_direction="column"
         >
           <RiHomeLine />
+          
           <TextLabel>홈</TextLabel>
         </Grids>
         <Grids is_flex flex_direction="column">
@@ -50,11 +54,11 @@ const Footer = (props) => {
           <IoPersonOutline />
           <TextLabel>나의 당근</TextLabel>
         </Grids>
-        <Grids is_flex flex_direction="column">
+        <GridOffSharp is_flex flex_direction="column">
           <IoLogOutOutline />
           <TextLabel>로그아웃</TextLabel>
+        </GridOffSharp>
         </Grids>
-      </Grids>
     </React.Fragment>
   );
 };

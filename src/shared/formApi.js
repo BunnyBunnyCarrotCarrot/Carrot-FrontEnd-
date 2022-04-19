@@ -19,7 +19,7 @@ instance.interceptors.request.use(function (config) {
 
 const formApis = {
   // 게시글 작성
-  posting: (formdata) => instance.post("/post", formdata),
+  posting: (formdata) => instance.post("/item", {formdata}),
 };
 
 export default formApis;

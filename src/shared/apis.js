@@ -16,6 +16,13 @@ instance.interceptors.request.use(function (config) {
     "application/json;charset=UTF-8; charset=UTF-8";
   config.headers.common["authorization"] = `${token}`;
   return config;
+
+  // 예림님꺼
+  // api.interceptors.request.use(function (config) {
+  // const accessToken = document.cookie.split('=')[1];
+  // config.headers.common['X-AUTH-TOKEN'] = `${accessToken}`; //TOKEN 종류 입력
+  // return config;
+
 });
 
 const apis = {
@@ -52,4 +59,37 @@ const apis = {
   getOnePost: (postId) => instance.get("/post/" + postId),
 };
 
+  // // item
+	// add: (data) => instance.post('/api/item', data),
+	// edit: (itemId, data) => instance.put(`api/item/${itemId}/update`, data),
+	// del: (itemId) => instance.delete(`api/item/${itemId}`),
+	// itemsLoad: () => instance.get('/api/main'),
+	// itemIdLoad: (itemId) => instance.get(`/api/item/${itemId}`),
+
 export default apis;
+
+// import axios from 'axios';
+
+// const api = axios.create({
+// 	baseURL: 'apis',
+// 	headers: {
+// 		'content-type': 'application/json;charset=UTF-8',
+// 		accept: 'application/json,',
+// 	},
+// });
+
+// api.interceptors.request.use(function (config) {
+// 	const accessToken = document.cookie.split('=')[1];
+// 	config.headers.common['X-AUTH-TOKEN'] = `${accessToken}`; //TOKEN 종류 입력
+// 	return config;
+// });
+
+// export const apis = {
+// 	// item
+// 	add: (data) => api.post('/api/item', data),
+// 	edit: (itemId, data) => api.put(`api/item/${itemId}/update`, data),
+// 	del: (itemId) => api.delete(`api/item/${itemId}`),
+// 	itemsLoad: () => api.get('/api/main'),
+// 	itemIdLoad: (itemId) => api.get(`/api/item/${itemId}`),
+
+// };

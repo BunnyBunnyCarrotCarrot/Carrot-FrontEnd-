@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { Grids, TextLabel } from "../elements/Index";
-// import test from "../images/test.jpeg";
+import test from "../images/test.jpg";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
 import { IoEllipsisVertical } from "react-icons/io5";
 import ReactModal from "react-modal";
 import "../shared/App.css";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 // import { postActions } from "../redux/modules/Post";
 import { history } from "../redux/configStore";
 
 const MainCard = (props) => {
-  const dispatch = useDispatch();
+//   const dispatch = useDispatch();
 
-  const { page, user, postId, title, price, likeCnt, state } = props;
-  const image = [test];
+  const { page, userLocation, itemId, title, price, likeCount, state } = props; 
+  const images = [test];
 
   const [ModalState, setModalState] = React.useState(false);
   const [likeState, setLikeState] = React.useState(false);
@@ -23,16 +23,17 @@ const MainCard = (props) => {
     setLikeState(!likeState);
   };
 
-  const delPost = () => {
-    if (window.confirm("정말로 삭제하시겠습니까?")) {
-      // dispatch(postActions.delPostDB(postId));
-    }
-  };
 
-  // const postStateSet = () => {
-  //   dispatch(postActions.postStateSetDB(postId, state));
-  //   setModalState(false);
-  // };
+//   const delPost = () => {
+//     if (window.confirm("정말로 삭제하시겠습니까?")) {
+//       dispatch(postActions.delPostDB(postId));
+//     }
+//   };
+
+//   const postStateSet = () => {
+//     dispatch(postActions.postStateSetDB(postId, state));
+//     setModalState(false);
+//   };
 
   return (
     <React.Fragment>
@@ -44,8 +45,8 @@ const MainCard = (props) => {
         align_items="flex-start"
         position="relative"
       >
-        <Grids width="30%" _onClick={() => history.push("/detail/" + postId)}>
-          <AspectInner src={image[0]} />
+        <Grids width="30%" _onClick={() => history.push("/detail/" + itemId)}>
+          <AspectInner src={images[0]} />
         </Grids>
         <Grids
           is_flex
@@ -54,10 +55,11 @@ const MainCard = (props) => {
           gap="5px"
           width="60%"
         >
+          
           <TextLabel F_size="17px" F_weight="bold">
-            {title}
+            {title}메타몽!!
           </TextLabel>
-          <TextLabel F_color="#4D5159">{user.address}</TextLabel>
+          <TextLabel F_color="#4D5159">{userLocation}</TextLabel>
           <Grids is_flex gap="10px">
             {state && (
               <Grids
@@ -76,13 +78,13 @@ const MainCard = (props) => {
         </Grids>
         <Grids position="absolute" right="10px" bottom="10px" is_flex gap="5px">
           <IoHeartOutline />
-          <TextLabel>{likeCnt}</TextLabel>
+          <TextLabel>{likeCount}</TextLabel>
         </Grids>
 
         <Grids position="absolute" top="15px" right="10px">
-          {page === "like" ? (
+          {page === "like" ? (  //???
             <Grids
-              font_size="23px"
+              font_size="50px"
               _onClick={() => {
                 likeChange();
               }}
@@ -136,12 +138,11 @@ const MainCard = (props) => {
           font_size="16px"
           font_weight="550"
         >
-          <Grids>판매상태 변경</Grids>
-          {/* _onClick={() => postStateSet()} */}
-          <Grids _onClick={() => history.push("/edit/" + postId)}>
+          {/* <Grids _onClick={() => postStateSet()}>판매상태 변경</Grids> */}
+          <Grids _onClick={() => history.push("/edit/" + itemId)}>
             게시글 수정
           </Grids>
-          <Grids _onClick={delPost}>삭제</Grids>
+          {/* <Grids _onClick={delPost}>삭제</Grids> */}
         </Grids>
       </ReactModal>
     </React.Fragment>
@@ -150,9 +151,9 @@ const MainCard = (props) => {
 
 MainCard.defaultProps = {
   page: null,
-  userInfo: {
-    userid: 0,
-    nickname: "",
+  itemList: {
+    userId: 0,
+    userName: "",
     rate: 36.5,
     address: "",
     profileImage: "",
@@ -162,10 +163,10 @@ MainCard.defaultProps = {
   content: "",
   category: "",
   createdAt: "",
-  image: [],
+  images: [],
   price: 0,
   viewCnt: 0,
-  likeCnt: 0,
+  likeCount: 0,
   state: true,
   consumer: "",
 };

@@ -1,8 +1,6 @@
 import "./App.css";
 import React from "react";
-// import styled from "styled-components";
-import Container from '@material-ui/core/Container';
-
+import styled from "styled-components";
 import {
   // Detail,
   // Edit,
@@ -10,6 +8,8 @@ import {
   Main,
   MyPage,
   // Post,
+  // MyPage,
+  Item,
   Signup,
   Start,
   ProfileModify,
@@ -44,8 +44,8 @@ function App() {
           <Route path="/main" exact component={Main} />
 
           {/* 게시글 */}
-          {/* <Route path="/post" exact component={Post} />
-          <Route path="/edit/:postid" exact component={Edit} />
+          <Route path="/item" exact component={Item} />
+            {/*<Route path="/edit/:postid" exact component={Edit} />
           <Route path="/detail/:postid" exact component={Detail} />
           <Route path="/chat" exact component={Chat} /> */}
 
@@ -63,9 +63,12 @@ function App() {
   );
 }
 
-// const Containers = styled.div`
-//   width: 100%;
-//   min-height: 100vh;
-// `;
+const Containers = styled.div`
+  margin: auto;
+  width: 100%;
+  max-width: 900px;
+  min-height: 100vh;
+  box-sizing: border-box;
+`;
 
 export default App;
