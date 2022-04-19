@@ -67,6 +67,7 @@ const Login = (props) => {
     {/* 로그인 버튼 */}
     <Grids padding='16px 0 20px' B_bottom='1px solid #000'>
       <Button 
+     width= '100%'
       height='30px'
       _onClick={submit}  
       Border='1px solid rgba(0,0,0,0.07)' 

@@ -1,16 +1,14 @@
 import axios from "axios";
 import { getCookie } from "./Cookie";
 
-const token = getCookie("authorization");
-
-const instance = axios.create({
-  baseURL: "",
+export const formapi = axios.create({
+  baseURL: "formapi",
   headers: {
     "Content-Type": "multipart/form-data",
   },
 });
 
-instance.interceptors.request.use(function (config) {
+formapi.interceptors.request.use(function (config) {
   const token = getCookie("authorization");
 
   config.headers.common["authorization"] = `${token}`;
@@ -19,7 +17,7 @@ instance.interceptors.request.use(function (config) {
 
 const formApis = {
   // 게시글 작성
-  posting: (formdata) => instance.post("/post", formdata),
+  posting: (formdata) => formapi.post("/item", {formdata}),
 };
 
 export default formApis;

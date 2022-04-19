@@ -5,6 +5,6 @@ import TextLabel from "./TextLabel";
 import Input from "./Input";
 import Button from "./Button";
 import Spinner from "./Spinner";
-import Upload from "./Upload";
 
-export { Spinner, Input, Grids, Image, Text, Button, Upload, TextLabel};
+
+export { Spinner, Input, Grids, Image, Text, Button, TextLabel};

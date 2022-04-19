@@ -8,7 +8,6 @@ import Container from '@material-ui/core/Container';
 
 const Start = (props) => {
   return (
-    <Container maxWidth="sm">
     <Grids>
       <Header title="로그인" />
       <Grids
@@ -35,13 +34,16 @@ const Start = (props) => {
         </Text>
       </Grids>
       <Grids
-        position="fixed"
-        bottom="0"
-        width="50vw"
-        padding="15px"
-        is_flex
-        flex_direction="column"
-        gap="20px"
+          position="absolute"
+          top="90%"
+          left="50%"
+          right="50%"
+          transform="translate(-50%, -50%)"
+          width="50vw"
+          padding="15px"
+          is_flex
+          flex_direction="column"
+          gap="20px"
       >
         <Grids width="100%">
           <Button
@@ -72,7 +74,6 @@ const Start = (props) => {
         </Grids>
       </Grids>
     </Grids>
-    </Container>
   );
 };
 
