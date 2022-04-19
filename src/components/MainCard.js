@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import { Grid, TextLabel } from "../elements/Index";
-import test from "../images/test.jpeg";
+import { Grids, TextLabel } from "../elements/Index";
+// import test from "../images/test.jpeg";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
 import { IoEllipsisVertical } from "react-icons/io5";
 import ReactModal from "react-modal";
 import "../shared/App.css";
 import { useDispatch } from "react-redux";
-import { postActions } from "../redux/modules/Post";
+// import { postActions } from "../redux/modules/Post";
 import { history } from "../redux/configStore";
 
 const MainCard = (props) => {
@@ -25,18 +25,18 @@ const MainCard = (props) => {
 
   const delPost = () => {
     if (window.confirm("정말로 삭제하시겠습니까?")) {
-      dispatch(postActions.delPostDB(postId));
+      // dispatch(postActions.delPostDB(postId));
     }
   };
 
-  const postStateSet = () => {
-    dispatch(postActions.postStateSetDB(postId, state));
-    setModalState(false);
-  };
+  // const postStateSet = () => {
+  //   dispatch(postActions.postStateSetDB(postId, state));
+  //   setModalState(false);
+  // };
 
   return (
     <React.Fragment>
-      <Grid
+      <Grids
         B_bottom="1px solid rgba(0,0,0,0.07)"
         padding="15px"
         gap="15px"
@@ -44,10 +44,10 @@ const MainCard = (props) => {
         align_items="flex-start"
         position="relative"
       >
-        <Grid width="30%" _onClick={() => history.push("/detail/" + postId)}>
+        <Grids width="30%" _onClick={() => history.push("/detail/" + postId)}>
           <AspectInner src={image[0]} />
-        </Grid>
-        <Grid
+        </Grids>
+        <Grids
           is_flex
           flex_direction="column"
           align_items="flex-start"
@@ -58,9 +58,9 @@ const MainCard = (props) => {
             {title}
           </TextLabel>
           <TextLabel F_color="#4D5159">{user.address}</TextLabel>
-          <Grid is_flex gap="10px">
+          <Grids is_flex gap="10px">
             {state && (
-              <Grid
+              <Grids
                 width="auto"
                 BG_c="rgba(0,0,0,0.6)"
                 padding="1px 10px 3px 10px"
@@ -69,19 +69,19 @@ const MainCard = (props) => {
                 <TextLabel F_weight="bold" F_color="white" F_size="12px">
                   거래완료
                 </TextLabel>
-              </Grid>
+              </Grids>
             )}
             <TextLabel F_weight="bold">{price}원</TextLabel>
-          </Grid>
-        </Grid>
-        <Grid position="absolute" right="10px" bottom="10px" is_flex gap="5px">
+          </Grids>
+        </Grids>
+        <Grids position="absolute" right="10px" bottom="10px" is_flex gap="5px">
           <IoHeartOutline />
           <TextLabel>{likeCnt}</TextLabel>
-        </Grid>
+        </Grids>
 
-        <Grid position="absolute" top="15px" right="10px">
+        <Grids position="absolute" top="15px" right="10px">
           {page === "like" ? (
-            <Grid
+            <Grids
               font_size="23px"
               _onClick={() => {
                 likeChange();
@@ -89,18 +89,18 @@ const MainCard = (props) => {
               color={likeState ? "#ff7e36" : "#4D5159"}
             >
               {likeState ? <IoHeart /> : <IoHeartOutline />}
-            </Grid>
+            </Grids>
           ) : (
-            <Grid
+            <Grids
               _onClick={() => {
                 setModalState(true);
               }}
             >
               <IoEllipsisVertical />
-            </Grid>
+            </Grids>
           )}
-        </Grid>
-      </Grid>
+        </Grids>
+      </Grids>
 
       {/* 수정 모달 & 좋아요 기능 */}
       <ReactModal
@@ -126,7 +126,7 @@ const MainCard = (props) => {
           },
         }}
       >
-        <Grid
+        <Grids
           is_flex
           flex_direction="column"
           justify_content="space-around"
@@ -136,12 +136,13 @@ const MainCard = (props) => {
           font_size="16px"
           font_weight="550"
         >
-          <Grid _onClick={() => postStateSet()}>판매상태 변경</Grid>
-          <Grid _onClick={() => history.push("/edit/" + postId)}>
+          <Grids>판매상태 변경</Grids>
+          {/* _onClick={() => postStateSet()} */}
+          <Grids _onClick={() => history.push("/edit/" + postId)}>
             게시글 수정
-          </Grid>
-          <Grid _onClick={delPost}>삭제</Grid>
-        </Grid>
+          </Grids>
+          <Grids _onClick={delPost}>삭제</Grids>
+        </Grids>
       </ReactModal>
     </React.Fragment>
   );

@@ -18,8 +18,12 @@ const Login = (props) => {
       return;
     }
     // 최소 8자 이상
-    if(id.length < 8 || pwd.length < 8){
-      window.alert('아이디와 비밀번호는 최소 8자입니다.');
+    if( id.length <= 3 || id.length > 15 ){
+      window.alert('아이디는 최소 4자, 최대 15자입니다.');
+      return;
+    }
+    if( pwd.length <= 5 || pwd.length > 15 ){
+      window.alert('비밀번호는 최소 6자, 최대 15자입니다.');
       return;
     }
     // dispatch
