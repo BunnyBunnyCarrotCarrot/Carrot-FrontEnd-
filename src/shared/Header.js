@@ -1,6 +1,5 @@
 import React from "react";
 import { IoArrowBackOutline } from "react-icons/io5";
-import styled from "styled-components";
 import { Grids, Text, Button } from "../elements/Index";
 import { history } from "../redux/configStore";
 
@@ -63,6 +62,7 @@ const Header = (props) => {
       BG_c="white"
       z_index="3"
     >
+    <Button BG_color="white" Border="none">
       <Text
         _onClick={() => history.goBack()}
         width="auto"
@@ -71,7 +71,8 @@ const Header = (props) => {
       >
         <IoArrowBackOutline />
       </Text>
-      <Text width="auto" F_size="18px" F_weight="bold">
+    </Button>
+      <Text width="auto" F_size="25px" F_weight="bold">
         {title}
       </Text>
     </Grids>

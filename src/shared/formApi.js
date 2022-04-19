@@ -4,7 +4,7 @@ import { getCookie } from "./Cookie";
 const token = getCookie("authorization");
 
 const instance = axios.create({
-  baseURL: "",
+  baseURL: "http://52.78.238.235/",
   headers: {
     "Content-Type": "multipart/form-data",
   },

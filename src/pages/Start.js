@@ -4,11 +4,9 @@ import { Grids, Text, Button } from "../elements/Index";
 import logo from "../images/DaangnMarket_logo.jpeg";
 import { history } from "../redux/configStore";
 import Header from "../shared/Header";
-import Container from '@material-ui/core/Container';
 
 const Start = (props) => {
   return (
-    <Container maxWidth="sm">
     <Grids>
       <Header title="로그인" />
       <Grids
@@ -34,9 +32,13 @@ const Start = (props) => {
           내 동네를 설정하고 <br /> 당근마켓을 시작해보세요.
         </Text>
       </Grids>
+      
       <Grids
-        position="fixed"
-        bottom="0"
+        position="absolute"
+        top="90%"
+        left="50%"
+        right="50%"
+        transform="translate(-50%, -50%)"
         width="50vw"
         padding="15px"
         is_flex
@@ -61,18 +63,16 @@ const Start = (props) => {
           <Text width="auto" margin="0 5px 0 0">
             아직 계정이 없나요?
           </Text>
-          <Text
+          <Button 
             _onClick={() => history.push("/signup")}
             width="auto"
-            F_weight="bold"
-            F_color="#FF7E36"
-          >
-            회원가입
-          </Text>
+            BG_color="white"
+            Border="none">
+            <Text F_weight="bold" F_color="#FF7E36">회원가입</Text>
+          </Button>
         </Grids>
       </Grids>
     </Grids>
-    </Container>
   );
 };
 

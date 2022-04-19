@@ -18,8 +18,12 @@ const Login = (props) => {
       return;
     }
     // 최소 8자 이상
-    if(id.length < 8 || pwd.length < 8){
-      window.alert('아이디와 비밀번호는 최소 8자입니다.');
+    if( id.length <= 3 || id.length > 15 ){
+      window.alert('아이디는 최소 4자, 최대 15자입니다.');
+      return;
+    }
+    if( pwd.length <= 5 || pwd.length > 15 ){
+      window.alert('비밀번호는 최소 6자, 최대 15자입니다.');
       return;
     }
     // dispatch
@@ -38,7 +42,7 @@ const Login = (props) => {
       > 로그인 </Text>
     </Grids>
     {/* 아이디 입력창 */}
-    <Grids width='100%' padding='16px 0 16px'>
+    <Grids width='80%' padding='16px 0 16px'>
       <Input 
       value={id}
       is_caret='#FF7E36'
@@ -51,7 +55,7 @@ const Login = (props) => {
       />
     </Grids>
     {/* 비밀번호 입력창 */}
-    <Grids width='100%' padding='0 0 16px'>
+    <Grids width='80%' padding='0 0 16px'>
       <Input 
       value={pwd}
       is_caret='#FF7E36'
@@ -65,8 +69,9 @@ const Login = (props) => {
       />
     </Grids>
     {/* 로그인 버튼 */}
-    <Grids padding='16px 0 20px' B_bottom='1px solid #000'>
+    <Grids padding='16px 0 20px' B_bottom='1px solid #000' width='80%'>
       <Button 
+      width= '100%'
       height='30px'
       _onClick={submit}  
       Border='1px solid rgba(0,0,0,0.07)' 
@@ -80,7 +85,7 @@ const Login = (props) => {
       <Text F_color='#FF7E36' >아직 회원이 아니라면?</Text>
     </Grids>
     {/* 회원가입 이동 페이지 버튼 */}
-    <Grids padding='8px 0 0' width='100%'>
+    <Grids padding='8px 0 0' width='80%'>
       <Button 
       width='100%'
       height='30px'
