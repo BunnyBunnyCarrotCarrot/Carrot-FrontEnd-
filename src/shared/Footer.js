@@ -1,28 +1,31 @@
 import React, { useEffect } from "react";
 import { RiHomeLine, RiHomeFill } from "react-icons/ri";
-import { Grid, TextLabel } from "../elements/Index";
+import { Grids, TextLabel } from "../elements/Index";
 import { IoChatbubblesOutline, IoChatbubblesSharp } from "react-icons/io5";
 import { IoPersonOutline, IoPerson } from "react-icons/io5";
 import { IoNewspaperOutline, IoNewspaperSharp } from "react-icons/io5";
 import { IoLogOutOutline } from "react-icons/io5";
 import { history } from "../redux/configStore";
 import styled, { keyframes } from "styled-components";
+import { GridOffSharp } from "@material-ui/icons";
 
 const Footer = (props) => {
   return (
     <React.Fragment>
-      <Grid
+      <Grids
         is_flex
         justify_content="space-around"
         position="fixed"
+        transform="translate(-50%, -60%)"
+        left="50%"
         bottom="0"
         font_size="30px"
         BG_c="white"
         width="100%"
-        height="70px"
+        height="50px"
         B_top="1px solid rgba(0,0,0,0.07)"
       >
-        <Grid
+        <Grids
           _onClick={() => {
             history.push("/main");
           }}
@@ -30,17 +33,18 @@ const Footer = (props) => {
           flex_direction="column"
         >
           <RiHomeLine />
+          
           <TextLabel>홈</TextLabel>
-        </Grid>
-        <Grid is_flex flex_direction="column">
+        </Grids>
+        <Grids is_flex flex_direction="column">
           <IoNewspaperOutline />
           <TextLabel>나의상품</TextLabel>
-        </Grid>
-        <Grid is_flex flex_direction="column">
+        </Grids>
+        <Grids is_flex flex_direction="column">
           <IoChatbubblesOutline />
           <TextLabel>채팅</TextLabel>
-        </Grid>
-        <Grid
+        </Grids>
+        <Grids
           _onClick={() => {
             history.push("/mypage");
           }}
@@ -49,12 +53,13 @@ const Footer = (props) => {
         >
           <IoPersonOutline />
           <TextLabel>나의 당근</TextLabel>
-        </Grid>
-        <Grid is_flex flex_direction="column">
+        </Grids>
+        <GridOffSharp is_flex flex_direction="column">
           <IoLogOutOutline />
           <TextLabel>로그아웃</TextLabel>
-        </Grid>
-      </Grid>
+        </GridOffSharp>
+        </Grids>
+  
     </React.Fragment>
   );
 };

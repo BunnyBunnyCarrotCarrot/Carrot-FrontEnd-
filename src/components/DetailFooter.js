@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, TextLabel, Button } from "../elements/Index";
+import { Grids, TextLabel, Button } from "../elements/Index";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
 
 const DetailFooter = (props) => {
@@ -9,7 +9,7 @@ const DetailFooter = (props) => {
 
   return (
     <React.Fragment>
-      <Grid
+      <Grids
         BG_c="white"
         width="100%"
         position="fixed"
@@ -19,8 +19,8 @@ const DetailFooter = (props) => {
         justify_content="space-between"
         B_top="1px solid rgba(0,0,0,0.1)"
       >
-        <Grid is_flex>
-          <Grid
+        <Grids is_flex>
+          <Grids
             font_size="25px"
             padding="0 10px"
             B_right="1px solid rgba(0,0,0,0.1)"
@@ -28,27 +28,27 @@ const DetailFooter = (props) => {
             color={state ? "red" : ""}
           >
             {state ? <IoHeart /> : <IoHeartOutline />}
-          </Grid>
-          <Grid
+          </Grids>
+          <Grids
             padding="0 10px"
             is_flex
             flex_direction="column"
             gap="5px"
             align_items="flex-start"
           >
-            <Grid>
+            <Grids>
               <TextLabel F_size="18px" F_weight="bold">
                 {price}원
               </TextLabel>
-            </Grid>
-            <Grid>
+            </Grids>
+            <Grids>
               <TextLabel F_color="#FF7E36" F_decoration="underline">
                 가격 제안하기
               </TextLabel>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid color="white">
+            </Grids>
+          </Grids>
+        </Grids>
+        <Grids color="white">
           <Button
             BG_color="#FF7E36"
             Border="0"
@@ -59,8 +59,8 @@ const DetailFooter = (props) => {
               채팅으로 거래하기
             </TextLabel>
           </Button>
-        </Grid>
-      </Grid>
+        </Grids>
+      </Grids>
     </React.Fragment>
   );
 };

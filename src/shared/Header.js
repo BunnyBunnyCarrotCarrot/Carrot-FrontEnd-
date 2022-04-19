@@ -1,14 +1,13 @@
 import React from "react";
 import { IoArrowBackOutline } from "react-icons/io5";
-import styled from "styled-components";
 import { Grids, Text, Button } from "../elements/Index";
 import { history } from "../redux/configStore";
 
 const Header = (props) => {
-  const { title, _dis, _onClick } = props;
+  const { title, _dis, _onClick, userLocation } = props;
 
   const f_c = _dis ? '#000':'#FF7E36';
-  if(title === 'post'){
+  if(title === 'write'){
     return (
       <Grids
       padding="15px"
@@ -32,6 +31,7 @@ const Header = (props) => {
         >
           <IoArrowBackOutline />
         </Text>
+
         <Text width="auto" F_size="18px" F_weight="bold">
           중고거래 글쓰기
         </Text>
@@ -63,6 +63,8 @@ const Header = (props) => {
       BG_c="white"
       z_index="3"
     >
+   
+   <Button BG_color="white" Border="none">
       <Text
         _onClick={() => history.goBack()}
         width="auto"
@@ -71,8 +73,9 @@ const Header = (props) => {
       >
         <IoArrowBackOutline />
       </Text>
+      </Button>
       <Text width="auto" F_size="18px" F_weight="bold">
-        {title}
+        {title}{userLocation}
       </Text>
     </Grids>
   );

@@ -1,23 +1,28 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+
+//midleware
 import thunk from "redux-thunk";
+import logger from 'redux-logger';
+
+//redux router
 import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
+//reducers
 import User from "./modules/User";
 import Image from "./modules/Image";
-import Item from "./modules/Item";
+import Item from "./modules/Itemredux.js";
 
 export const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
-  // 모듈 적어주세요.
   item: Item,
   user: User,
   image: Image,
   router: connectRouter(history),
 });
 
-const middlewares = [thunk.withExtraArgument({ history: history })];
+const middlewares = [thunk.withExtraArgument({ history: history }), logger];
 
 // 지금이 어느 환경인 지 알려줘요. (개발환경, 프로덕션(배포)환경 ...)
 const env = process.env.NODE_ENV;

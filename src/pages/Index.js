@@ -4,7 +4,7 @@
 import Login from "./Login";
 import Main from "./Main";
 // import MyPage from "./MyPage";
-// import Post from "./Post";
+import Item from "./Item";
 import Signup from "./Signup";
 import Start from "./Start";
 // import ProfileModify from "./ProfileModify";
@@ -21,7 +21,7 @@ export {
   Login,
   Main,
 //   MyPage,
-//   Post,
+  Item,
   Signup,
   Start,
 //   ProfileModify,
