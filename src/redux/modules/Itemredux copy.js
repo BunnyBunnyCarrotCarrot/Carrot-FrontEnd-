@@ -11,7 +11,7 @@ import moment from "moment";
 //디스패치를 눌러 애드포스트디비를 통해 미들웨어로 가고, 
 //애드포스트디비를 이용해 함수를 실행하고,
 //디스패치로 리듀서에 다시보내고, 리듀서에서 스테이트 상태를 드래프트로 바꿔주고,
-//정상실행됐으면 언쉬프트를 통해 액션의 포스트리스트의 배열 맨앞에 추가된다. 
+//정상실행됐으면 언쉬프트를 통해 액션의 페이로드의 포스트리스트의 배열 맨앞에 추가된다. 
 
 //action
 
@@ -52,22 +52,21 @@ const itemIntialState = {
 
 //이 다음 리듀서에 액션을 저장/ 액션을 보내주는 애는 디스패치
 
-const loaditemDB = () =>
-    async(dispatch, getState, {history}) =>{
-        try {
-            const {data} = await apis.itemsLoad();
-            dispatch(loadItem(data));
-            dispatch(imgActions.setpreview(null));
-
-        }catch(e){
-            console.log(`아이템들 로드 오류~~`)
-        }
+const loaditemDB = () =>{
+    return function(dispatch, getState, {history}){
+        apis
+            .itemsLoad()
+            .then((res)=>{
+                console.log(res.data);
+                dispatch(loadItem(res.data));
+            })
+            .catch((err)=>{
+                console.log('로드에러!!');
+            });
+        };
     };
 
 const DetailItemDB = (itemId) =>{
-
-    console.log(itemId);
-       
     return function(dispatch, getstate,{history}) {
         apis
         .itemIdLoad(itemId)
@@ -82,34 +81,35 @@ const DetailItemDB = (itemId) =>{
 };
 
 const addItemDB = (data) =>{
-
-
+    console.log(data);
+    
     return function(dispatch, getState, {history}) {
+    
         const formdata = new FormData();
-        let files = getState().image.files;
+        let files = getState().image.files[0];
         
-        
+        console.log(files)
+        formdata.append("image", files);
         formdata.append(
-            "itemDto",
-            new Blob([JSON.stringify(data)], {type: "application/json"})
-        );
-
-        formdata.append("files",files);
-
-        console.log(files,[JSON.stringify(data)], {type: "application/json"});
-
+            "post",
+            new Blob([JSON.stringify(data)], { type: "application/json" })
+          );
+        console.log(formdata);
         formApis
         .posting(formdata)
+        //요기까지가 서버에 보내는 과정 이 아래는 서버에서 응답을 받고 난 과정 그래서, 지금 문제는 위의 애들이 안됨
+        //그래서, 데이터 형식이 맞는지 백엔드와 이야기 해볼것
         .then((res) =>{
             console.log(res);
             const itemId = initialState.list.legnth;
             const date = moment().format("YYYY-MM-DD");
 
             dispatch(
+                // 리덕스저장용
                 addItem({
                     ...itemIntialState,
                     ...data,
-                    createdAt: date,
+                    modefiedAt: date,
                     itemId: itemId
                 })
             )

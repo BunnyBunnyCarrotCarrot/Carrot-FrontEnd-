@@ -10,6 +10,8 @@ const instance = axios.create({
   },
 });
 
+instance.defaults.headers.common["authorization"] = token;
+
 instance.interceptors.request.use(function (config) {
   const token = getCookie("authorization");
 
@@ -19,7 +21,7 @@ instance.interceptors.request.use(function (config) {
 
 const formApis = {
   // 게시글 작성
-  posting: (formdata) => instance.post("/item", {formdata}),
+  posting: (formdata) => instance.post("api/item", {formdata}),
 };
 
 export default formApis;

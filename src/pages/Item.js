@@ -1,5 +1,7 @@
 import React,{useState} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { history } from "../redux/configStore";
+
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -8,8 +10,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Header from "../shared/Header";
 import Grids from "../elements/Grids";
 import Imageupload from "../components/Imageupload";
+
 import { Category, SettingsOutlined } from "@material-ui/icons";
-import { useDispatch } from "react-redux";
 import { ItemActions } from "../redux/modules/Itemredux";
 import { imgActions } from "../redux/modules/Image";
 
@@ -24,30 +26,31 @@ const Item = (props) =>{
     const [about, setAbout] = useState("");
     
     const [cate,setCate] = useState("");
-    const handleChange = (e) => {
-        setCate(e.target.value);
-      };
+   
 
-    const [itemdispatch, setitemDispatch] = useState(true);
+    const [_dis, setDis] = useState(true);
     
     const least = () => {
         if (title.length !== 0 && about.length !== 0 && cate) {
-          setitemDispatch(false);
+          setDis(false);
         }
         if (title.length === 0 || about.length === 0) {
-          setitemDispatch(true);
+         setDis(true);
         }
       };
 
+      const handleChange = (e) => {
+        setCate(e.target.value);
+      };
 
     const posting =()=>{
-            setitemDispatch(true);
+            setDis(true);
 
             let data = {
                 title: title,
-                price: price,
+                price: parseInt(price),
                 about: about,
-                category: cate,
+                categoryId: cate,
                 
             };
             dispatch(ItemActions.addItemDB(data));
@@ -56,7 +59,7 @@ const Item = (props) =>{
     
     return(
         <>
-        <Header title="write" itemdispatch={itemdispatch} _onClick={posting}/>
+        <Header title="write" _dis={_dis} _onClick={posting}/>
         <Grids width="100%" padding="8px">
         
         {/* 사진업로드 */}

@@ -44,7 +44,7 @@ function App() {
           <Route path="/main" exact component={Main} />
 
           {/* 게시글 */}
-          <Route path="/item" exact component={Item} />
+          <Route path="/Item" exact component={Item} />
             {/*<Route path="/edit/:postid" exact component={Edit} />
           <Route path="/detail/:postid" exact component={Detail} />
           <Route path="/chat" exact component={Chat} /> */}

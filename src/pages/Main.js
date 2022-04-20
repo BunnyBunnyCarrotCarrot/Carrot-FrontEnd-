@@ -18,11 +18,11 @@ import {
 
 const Main = (props) => {
   const dispatch = useDispatch();
-  const [state, setState] = useState(true);
+  const [state, setState] = React.useState(true);
   const itemList = useSelector((state) => state.item.list);
   console.log(itemList);
 
-  useEffect(()=>{
+  React.useEffect(() => {
     dispatch(ItemActions.loaditemDB());
   }, []);
   
