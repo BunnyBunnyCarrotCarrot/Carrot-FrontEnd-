@@ -29,9 +29,9 @@ function App() {
   const dispatch = useDispatch();
   // const user = useSelector(state => state.user.userInfo);
   // console.log(user)
-  // React.useEffect(()=>{
-  //   dispatch(userActions.logincheckDB());
-  // },[])
+  React.useEffect(()=>{
+    dispatch(userActions.loginCheckDB());
+  },[])
 
   return (
     <React.Fragment>

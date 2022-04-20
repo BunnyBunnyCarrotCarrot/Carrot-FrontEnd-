@@ -10,6 +10,7 @@ const instance = axios.create({
   },
 });
 
+instance.defaults.headers.common["authorization"] = token;
 instance.interceptors.request.use(function (config) {
   const token = getCookie("authorization");
 
