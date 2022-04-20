@@ -17,11 +17,11 @@ const Imageupload = (props) =>{
 
     const handleAddImgfile = (e)=>{
         console.log(e.target.files);
-        const imageUrls = e.target.files;
+        const imgList = e.target.files;
         let imgUrlList = [...imgpreview];
 
-        for (let i=0; i<imageUrls.length; i++){
-            const setImgURL=URL.createObjectURL(imageUrls[i])
+        for (let i=0; i<imgList.length; i++){
+            const setImgURL=URL.createObjectURL(imgList[i])
             imgUrlList.push(setImgURL)       
         }
         
@@ -31,10 +31,10 @@ const Imageupload = (props) =>{
         
         setImgpreview(imgUrlList);
 
-        let imageList = [];
-        for (const key in imageUrls){
-            if(Object.hasOwnProperty.call(imageUrls,key)){
-                imageList.push(imageUrls[key]);
+        let imageUrls = [];
+        for (const key in imgList){
+            if(Object.hasOwnProperty.call(imgList,key)){
+                imageUrls.push(imgList[key]);
             }
         }
         

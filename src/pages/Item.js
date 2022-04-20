@@ -21,17 +21,19 @@ const Item = (props) =>{
     dispatch(imgActions.initimg());
     }, []);
 
+    const imageList = useSelector((state) => state.image.files);
+
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState("");
     const [about, setAbout] = useState("");
     
-    const [cate,setCate] = useState("");
+    const [categoryId,setCate] = useState("");
    
 
     const [_dis, setDis] = useState(true);
     
     const least = () => {
-        if (title.length !== 0 && about.length !== 0 && cate) {
+        if (title.length !== 0 && about.length !== 0 && categoryId) {
           setDis(false);
         }
         if (title.length === 0 || about.length === 0) {
@@ -45,15 +47,13 @@ const Item = (props) =>{
 
     const posting =()=>{
             setDis(true);
-
-            let data = {
-                title: title,
-                price: parseInt(price),
-                about: about,
-                categoryId: cate,
-                
-            };
-            dispatch(ItemActions.addItemDB(data));
+            
+            dispatch(ItemActions.addItemDB( title,
+                price,
+                about,
+                categoryId,
+                imageList
+                ));
             history.push("/main");
     };
     
@@ -96,7 +96,7 @@ const Item = (props) =>{
           autoWidth
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={cate}
+          value={categoryId}
           onChange={handleChange}
         >
           <MenuItem value={1}>디지털기기</MenuItem>

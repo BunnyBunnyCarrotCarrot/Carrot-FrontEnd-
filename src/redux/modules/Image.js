@@ -26,7 +26,7 @@ export default handleActions(
     {
         [SET_IMG]: (state, action) =>
         produce(state,(draft)=>{
-            draft.files =[...draft.files, action.payload.files]; 
+            draft.files =action.payload.files; 
         }),
 
         [INIT_IMG]: (state, action) =>

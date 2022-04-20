@@ -81,42 +81,42 @@ const DetailItemDB = (itemId) =>{
     };
 };
 
-const addItemDB = (data) =>{
-
+const addItemDB = (title,price,about,categoryId, imageList) =>{
 
     return function(dispatch, getState, {history}) {
+        console.log("타이틀",title,"가격",price,"내용",about,"카테고리",categoryId,"이미지",imageList);
         const formdata = new FormData();
-        let files = getState().image.files;
-        
         
         formdata.append(
             "itemDto",
-            new Blob([JSON.stringify(data)], {type: "application/json"})
+            new Blob(
+                [
+                JSON.stringify({
+                title: title,
+                price: parseInt(price),
+                about: about,
+                categoryId: parseInt(categoryId),
+            }),
+        ],
+        {type: "application/json"})
         );
+            console.log(imageList);
+        imageList.map((e, idx)=>{
+            return formdata.append("files",e);
+        });
 
-        formdata.append("files",files);
+        // formdata.append("files",(imageList,{type:"multipart/form-data"}));
 
-        console.log(files,[JSON.stringify(data)], {type: "application/json"});
 
         formApis
         .posting(formdata)
         .then((res) =>{
             console.log(res);
-            const itemId = initialState.list.legnth;
-            const date = moment().format("YYYY-MM-DD");
 
-            dispatch(
-                addItem({
-                    ...itemIntialState,
-                    ...data,
-                    createdAt: date,
-                    itemId: itemId
-                })
-            )
         })
         .catch((err)=>{
             console.log ('글쓰기 에러!')
-        })
+        });
     }
 }
 
