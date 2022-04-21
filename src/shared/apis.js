@@ -8,7 +8,6 @@ const instance = axios.create({
 });
 
 instance.defaults.headers.common["authorization"] = token;
-
 instance.interceptors.request.use(function (config) {
   const token = getCookie("authorization");
 
@@ -16,7 +15,6 @@ instance.interceptors.request.use(function (config) {
     "application/json;charset=UTF-8; charset=UTF-8";
   config.headers.common["authorization"] = `${token}`;
   return config;
-
 });
 
 const apis = {
@@ -38,7 +36,7 @@ const apis = {
     instance.post("/user/login", { userId: id, userPw: pwd }),
 
   // 로그인 체크
-  check: () => instance.get("/"),
+  // check: () => instance.get("/user/login"),
 
   // item
 	add: (data) => instance.post('/api/item', data),
@@ -49,5 +47,4 @@ const apis = {
 };
 
   
-
 export default apis;

@@ -8,11 +8,19 @@ const getCookie = (name) => {
     }
   };
   
-  const setCookie = (token, exp = 5) => {
+
+    const setCookie = (name, value, exp = 5) => {
     let date = new Date();
     date.setTime(date.getTime() + 1000 * 60 * 60 * 24 * exp);
-    document.cookie = `authorization=${token}; expires=${date}`;
+    document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
   };
+
+  // const setCookie = (token, exp = 5) => {
+  //   let date = new Date();
+  //   date.setTime(date.getTime() + 1000 * 60 * 60 * 24 * exp);
+  //   document.cookie = `authorization=${token}; expires=${date}`;
+  // };
+
   
   const deleteCookie = (name) => {
     let date = new Date("2020-01-01").toUTCString();
