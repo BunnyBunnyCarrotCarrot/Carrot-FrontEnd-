@@ -1,11 +1,11 @@
 import React from "react";
-import { Grid, TextLabel } from "../elements/Index";
+import { Grids, TextLabel } from "../elements/Index";
 
 const DetailContentCard = (props) => {
-  const { title, content, category, likeCnt, viewCnt } = props;
+  const { title, about, category, likeCount, viewCount } = props;
   return (
     <React.Fragment>
-      <Grid
+      <Grids
         B_bottom="1px solid rgba(0,0,0,0.1)"
         padding="20px 15px"
         is_flex
@@ -13,23 +13,23 @@ const DetailContentCard = (props) => {
         align_items="flex-start"
         justify_content="space-between"
       >
-        <Grid>
+        <Grids>
           <TextLabel F_weight="bold" F_size="25px">
             {title}
           </TextLabel>
-        </Grid>
-        <Grid margin="5px 0" color="#4D5159">
+        </Grids>
+        <Grids margin="5px 0" color="#4D5159">
           <TextLabel>{category}</TextLabel>
-        </Grid>
-        <Grid margin="10px 0 30px 0">
-          <TextLabel F_size="17px">{content}</TextLabel>
-        </Grid>
-        <Grid color="#4D5159">
+        </Grids>
+        <Grids margin="10px 0 30px 0">
+          <TextLabel F_size="17px">{about}</TextLabel>
+        </Grids>
+        <Grids color="#4D5159">
           <TextLabel F_size="13px">
-            관심 {likeCnt} ∙ 조회 {viewCnt}
+            관심 {likeCount} ∙ 조회 {viewCount}
           </TextLabel>
-        </Grid>
-      </Grid>
+        </Grids>
+      </Grids>
     </React.Fragment>
   );
 };

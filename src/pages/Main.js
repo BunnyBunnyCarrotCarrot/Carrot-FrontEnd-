@@ -20,11 +20,14 @@ const Main = (props) => {
   const dispatch = useDispatch();
   const [state, setState] = React.useState(true);
   const itemList = useSelector((state) => state.item.list);
-  console.log(itemList);
+   console.log(itemList);
+
 
   React.useEffect(() => {
     dispatch(ItemActions.loaditemDB());
   }, []);
+ 
+  
   
   return (
     <>
@@ -58,8 +61,8 @@ const Main = (props) => {
 
         </Grids>
         <Grids>
-          {itemList.map((el, i)=>{
-            return <MainCard {...el} key={i}/>;
+          {itemList&&itemList.map((p, idx)=>{
+            return <MainCard {...p} key={p.id}/>;
           })}
       </Grids>
       <ItemButton onClick={()=> history.push("/Item")}>+</ItemButton>
@@ -89,7 +92,6 @@ const ItemButton = styled.button`
   border-radius: 40px;
   border: none;
   cursor: pointer;
-
   & :hover {
     animation: ${EditAnimation} 0.2s;
   }

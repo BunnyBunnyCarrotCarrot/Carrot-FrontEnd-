@@ -3,7 +3,7 @@ import { Grids, TextLabel, Button } from "../elements/Index";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
 
 const DetailFooter = (props) => {
-  const { price, postId } = props;
+  const { price} = props;
 
   const [state, setState] = React.useState(false);
 

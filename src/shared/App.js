@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import styled from "styled-components";
 import {
-  // Detail,
+  Detail,
   // Edit,
   Login,
   Main,
@@ -45,9 +45,9 @@ function App() {
 
           {/* 게시글 */}
           <Route path="/Item" exact component={Item} />
-            {/*<Route path="/edit/:postid" exact component={Edit} />
-          <Route path="/detail/:postid" exact component={Detail} />
-          <Route path="/chat" exact component={Chat} /> */}
+            {/* <Route path="/edit/:postid" exact component={Edit} /> */}
+          <Route path="/item/detail/:postid" exact component={Detail} />
+          {/* <Route path="/chat" exact component={Chat} /> */}
 
           {/* 내정보 */}
           <Route path="/mypage" exact component={MyPage} />

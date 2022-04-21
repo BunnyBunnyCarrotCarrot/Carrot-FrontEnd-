@@ -1,4 +1,4 @@
-// import Detail from "./Detail";
+import Detail from "./Detail";
 // import Edit from "./Edit";
 // import List from "./List";
 import Login from "./Login";
@@ -15,7 +15,7 @@ import ProfileModify from "./ProfileModify";
 // import Chat from "./Chat";
 
 export {
-//   Detail,
+  Detail,
 //   Edit,
 //   List,
   Login,

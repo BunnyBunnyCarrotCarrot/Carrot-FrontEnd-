@@ -32,15 +32,18 @@ const initialState = {
 }
 
 const itemIntialState = {
-
-    itemId : null,
-    userName : "text",
-    title : "title",
-    price : 0,
-    about : "text",
     imageUrls : [],
+    itemId : null,
     likeCount : 0,
     likeState : "false",
+    modifiedAt : "",
+    price : 0,
+    soldOut: false,
+    title : "title",
+    userName : "text",
+
+
+    about : "text",
     categoryId : 0, 
     categoryName : "text",
 
@@ -52,18 +55,19 @@ const itemIntialState = {
 
 //이 다음 리듀서에 액션을 저장/ 액션을 보내주는 애는 디스패치
 
-const loaditemDB = () =>
-    async(dispatch, getState, {history}) =>{
-        try {
-            const {data} = await apis.itemsLoad();
-            dispatch(loadItem(data));
-            dispatch(imgActions.setpreview(null));
-
-        }catch(e){
-            console.log(`아이템들 로드 오류~~`)
-        }
+const loaditemDB = () =>{
+    return function (dispatch, getState, {history}){
+        apis
+        .itemsLoad()
+        .then((res)=>{
+            dispatch(loadItem(res.data))
+            console.log(res);
+        })
+        .catch((err)=> {
+            console.log('로드에러!')
+        })
     };
-
+}
 const DetailItemDB = (itemId) =>{
 
     console.log(itemId);
@@ -112,7 +116,8 @@ const addItemDB = (title,price,about,categoryId, imageList) =>{
         .posting(formdata)
         .then((res) =>{
             console.log(res);
-
+            dispatch(ItemActions.loaditemDB());
+            history.push("/main");
         })
         .catch((err)=>{
             console.log ('글쓰기 에러!')
@@ -134,19 +139,16 @@ const EditItemDB = (itemId, data) => {
     }
 }
 
-const DeleteItemDB = (itemId) => {
-    return function (dispatch, getstate, {history}){
-        apis
-        .del(itemId)
-        .then((res)=>{
-            console.log(res);
-            dispatch(deleteItem(itemId));
-        })
-        .catch((err) =>{
-            console.log('삭제 에러!');
-        })
-    }
-}
+const DeleteItemDB = (itemId) =>
+    
+    async (dispatch, getState, { history }) => {
+        try {
+            console.log(itemId);
+            await apis.del(itemId);
+            history.replace('/');
+        } catch (e) {}
+    };
+
 
 const ItemStateDB = (itemId, state) =>{
     return function (dispatch, getstate, {history}) {
@@ -159,9 +161,9 @@ export default handleActions(
     {
         [LOAD_ITEM]:(state, action) =>
         produce (state, (draft) =>{
-            console.log(action.payload.list);
-            draft.list = action.payload.list;
+            draft.list = action.payload;
         }),
+
         [EDIT_ITEM]:(state, action) =>
         produce (state, (draft)=>{
             const itemId = action.payload.itemId;
@@ -177,8 +179,10 @@ export default handleActions(
         produce(state,(draft)=>{
             draft.list.unshift(action.payload.data);
         }),
+
         [DELETE_ITEM]: (state, action) =>
         produce(state,(draft)=>{
+            console.log(state);
             const itemId = action.payload.itemId;
             draft.list = draft.list.filter((el)=>{
                 if (el.itemId === itemId){
@@ -197,7 +201,7 @@ const ItemActions = {
     addItemDB,
     EditItemDB,
     DeleteItemDB,
-    ItemStateDB
+    ItemStateDB,
 };
 
 export {ItemActions}
