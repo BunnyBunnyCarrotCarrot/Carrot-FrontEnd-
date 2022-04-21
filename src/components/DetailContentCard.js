@@ -33,5 +33,4 @@ const DetailContentCard = (props) => {
     </React.Fragment>
   );
 };
-
 export default DetailContentCard;

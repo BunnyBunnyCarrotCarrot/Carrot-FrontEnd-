@@ -1,25 +1,18 @@
 import React,{useState} from "react";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import Grids from "../elements/Grids";
 import { HiUpload } from 'react-icons/hi';
 import styled from "styled-components";
 import { imgActions } from "../redux/modules/Image";
-
 const Imageupload = (props) =>{
-
     //이미지 첨부파일 및 프리뷰
     const [imgpreview, setImgpreview] = useState([]);
     const [imgfile, setImgfile] = useState(null);
-
     const dispatch = useDispatch();
-
     const handleAddImgfile = (e)=>{
         console.log(e.target.files);
         const imgList = e.target.files;
         let imgUrlList = [...imgpreview];
-
         for (let i=0; i<imgList.length; i++){
             const setImgURL=URL.createObjectURL(imgList[i])
             imgUrlList.push(setImgURL)       
@@ -30,25 +23,22 @@ const Imageupload = (props) =>{
         }
         
         setImgpreview(imgUrlList);
-
         let imageUrls = [];
         for (const key in imgList){
             if(Object.hasOwnProperty.call(imgList,key)){
                 imageUrls.push(imgList[key]);
             }
         }
-        
-        
+
+
         dispatch(imgActions.setimg(imageUrls));
-        
+
 
     }
-
     const handleDeleteImage = (i) => {
         setImgpreview(imgpreview.filter((_, index) => index !== i));
       };
     
-
     return(
         <>
         <Grids is_flex padding="10px">
@@ -57,8 +47,8 @@ const Imageupload = (props) =>{
             <HiUpload />
             <Elin type = "file" id="files" accept ='image/*'multiple="multiple" />
         </Lab>
-        
-            
+
+
             {imgpreview.map((item,i)=>{
                 return(
                     <Elpre src={item} key={i}>
@@ -66,9 +56,7 @@ const Imageupload = (props) =>{
                     </Elpre>
                 )
             })}
-
         </Grids>
-
         
             </>
     );
@@ -84,11 +72,9 @@ const Lab = styled.label`
     border-radius: 3px;
     cursor: pointer;
 `;
-
 const Elin = styled.input`
     display: none;
 `;
-
 const Elpre = styled.div`
     width: 100px;
     height: 100px;
@@ -98,7 +84,6 @@ const Elpre = styled.div`
     background-size: cover;
     position: relative;
 `; 
-
 const Deletebtn = styled.div`
     color: #FFF;
     font-size: 3px;
@@ -113,6 +98,4 @@ const Deletebtn = styled.div`
     top: -5px;
     cursor: pointer;
 `
-
-
 export default Imageupload;

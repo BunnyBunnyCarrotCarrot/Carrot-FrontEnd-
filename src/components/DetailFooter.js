@@ -64,7 +64,6 @@ const DetailFooter = (props) => {
     </React.Fragment>
   );
 };
-
 DetailFooter.defaultProps = {};
 
 export default DetailFooter;

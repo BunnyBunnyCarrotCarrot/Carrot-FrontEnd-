@@ -15,11 +15,10 @@ const MainCard = (props) => {
 
   const { page, modifiedAt, itemId, title, price, likeCount, soldOut,imageUrls } = props; 
 
-  
+
 
   const [ModalState, setModalState] = React.useState(false);
   const [likeState, setLikeState] = React.useState(false);
-
   const likeChange = () => {
     setLikeState(!likeState);
   };
@@ -57,7 +56,7 @@ const MainCard = (props) => {
           gap="5px"
           width="60%"
         >
-          
+
           <TextLabel padding="10px 10px 0 10px" F_size="35px" >
             {title}
           </TextLabel>
@@ -83,7 +82,6 @@ const MainCard = (props) => {
           <IoHeartOutline />
           <TextLabel>{likeCount}</TextLabel>
         </Grids>
-
         <Grids position="absolute" top="15px" right="10px">
           {page === "like" ? (  //???
             <Grids
@@ -106,7 +104,6 @@ const MainCard = (props) => {
           )}
         </Grids>
       </Grids>
-
       {/* 수정 모달 & 좋아요 기능 */}
       <ReactModal
         state={ModalState}
@@ -126,7 +123,6 @@ const MainCard = (props) => {
             width: "100%",
             left: 0,
             padding: 0,
-
             transition: "0.3s",
           },
         }}
@@ -181,5 +177,4 @@ const AspectInner = styled.div`
   background-size: cover;
   border-radius: 10px;
 `;
-
 export default MainCard;
