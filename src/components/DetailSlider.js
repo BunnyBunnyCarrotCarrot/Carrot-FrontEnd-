@@ -1,27 +1,27 @@
 import React from "react";
-// import test from "../images/test.jpeg";
+import test from "../images/test.jpeg";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import styled from "styled-components";
 import { Grids } from "../elements/Index";
 
 const DetailSlider = (props) => {
-  //const { image } = props;
-  // const image = [test];
+  const { images } = props;
+  const image = [test];
 
   const style = {
     showArrows: false,
     showThumbs: false,
     showStatus: false,
-    // showIndicators: false, 페이지 표시 기능 off
+    showIndicators: false,
   };
   return (
     <React.Fragment>
       <Carousel {...style}>
-        {/* {image.map((el, i) => {
+         {image.map((el, i) => {
           return <AspectInner src={el} key={i} />;
-        })} */}
-      </Carousel>
+        })}
+    </Carousel>
     </React.Fragment>
   );
 };

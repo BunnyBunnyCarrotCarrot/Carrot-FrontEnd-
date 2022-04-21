@@ -1,20 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { Grids, TextLabel } from "../elements/Index";
-import test from "../images/test.jpg";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
 import { IoEllipsisVertical } from "react-icons/io5";
 import ReactModal from "react-modal";
 import "../shared/App.css";
-// import { useDispatch } from "react-redux";
-// import { postActions } from "../redux/modules/Post";
+import { useDispatch } from "react-redux";
+import itemActions from "../redux/modules/Itemredux"
 import { history } from "../redux/configStore";
+import { useSelector } from "react-redux";
 
 const MainCard = (props) => {
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  const { page, userLocation, itemId, title, price, likeCount, state } = props; 
-  const images = [test];
+  const { page, modifiedAt, itemId, title, price, likeCount, soldOut,imageUrls } = props; 
+
+  
 
   const [ModalState, setModalState] = React.useState(false);
   const [likeState, setLikeState] = React.useState(false);
@@ -24,29 +25,30 @@ const MainCard = (props) => {
   };
 
 
-//   const delPost = () => {
-//     if (window.confirm("정말로 삭제하시겠습니까?")) {
-//       dispatch(postActions.delPostDB(postId));
-//     }
-//   };
+  const delItem = () => {
+    if (window.confirm("정말로 삭제하시겠습니까?")) {
+      dispatch(itemActions.DeleteItemDB(itemId));
+    }
+  };
 
-//   const postStateSet = () => {
-//     dispatch(postActions.postStateSetDB(postId, state));
-//     setModalState(false);
-//   };
+
+  const itemStateSet = () => {
+    dispatch(itemActions.itemStateDB(itemId, soldOut));
+    setModalState(false);
+  };
 
   return (
     <React.Fragment>
       <Grids
         B_bottom="1px solid rgba(0,0,0,0.07)"
-        padding="15px"
+        padding="20px"
         gap="15px"
         is_flex
         align_items="flex-start"
         position="relative"
       >
-        <Grids width="30%" _onClick={() => history.push("/detail/" + itemId)}>
-          <AspectInner src={images[0]} />
+        <Grids width="28%" _onClick={() => history.push("item/detail/" + itemId)}>
+          <AspectInner src={imageUrls[0]} />
         </Grids>
         <Grids
           is_flex
@@ -56,12 +58,13 @@ const MainCard = (props) => {
           width="60%"
         >
           
-          <TextLabel F_size="17px" F_weight="bold">
-            {title}메타몽!!
+          <TextLabel padding="10px 10px 0 10px" F_size="35px" >
+            {title}
           </TextLabel>
-          <TextLabel F_color="#4D5159">{userLocation}</TextLabel>
+          <TextLabel  padding="10px 10px 0 10px" F_color="#4D5159">
+            위치: 업로드시간: {modifiedAt}</TextLabel>
           <Grids is_flex gap="10px">
-            {state && (
+            {soldOut && (
               <Grids
                 width="auto"
                 BG_c="rgba(0,0,0,0.6)"
@@ -73,7 +76,7 @@ const MainCard = (props) => {
                 </TextLabel>
               </Grids>
             )}
-            <TextLabel F_weight="bold">{price}원</TextLabel>
+            <TextLabel padding="10px 10px 0 10px" F_size="28px" F_weight="bold">{price}원</TextLabel>
           </Grids>
         </Grids>
         <Grids position="absolute" right="10px" bottom="10px" is_flex gap="5px">
@@ -138,11 +141,11 @@ const MainCard = (props) => {
           font_size="16px"
           font_weight="550"
         >
-          {/* <Grids _onClick={() => postStateSet()}>판매상태 변경</Grids> */}
+          <Grids _onClick={() => itemStateSet()}>판매상태 변경</Grids>
           <Grids _onClick={() => history.push("/edit/" + itemId)}>
             게시글 수정
           </Grids>
-          {/* <Grids _onClick={delPost}>삭제</Grids> */}
+          <Grids _onClick={delItem}>삭제</Grids>
         </Grids>
       </ReactModal>
     </React.Fragment>
@@ -151,24 +154,23 @@ const MainCard = (props) => {
 
 MainCard.defaultProps = {
   page: null,
-  itemList: {
-    userId: 0,
+  user: {
+    id: 0,
     userName: "",
     rate: 36.5,
-    address: "",
-    profileImage: "",
+    location: "",
+    imgUrl: "",
   },
-  postId: 0,
+  id: 0,
   title: "",
-  content: "",
+  about: "",
   category: "",
-  createdAt: "",
+  modifiedAt: "",
   images: [],
   price: 0,
-  viewCnt: 0,
+  viewCount: 0,
   likeCount: 0,
-  state: true,
-  consumer: "",
+  soldOut: true,
 };
 
 const AspectInner = styled.div`

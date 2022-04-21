@@ -15,7 +15,7 @@ const DetailUserCard = (props) => {
     >
       <Grids is_flex gap="10px">
         <Grids>
-          <Image shape="circle" size="45" src={user.profileImage} />
+          {/* <Image shape="circle" size="45" src={user.profileImage} /> */}
         </Grids>
         <Grids
           is_flex
@@ -23,8 +23,8 @@ const DetailUserCard = (props) => {
           align_items="flex-start"
           gap="5px"
         >
-          <TextLabel F_weight="bold">{user.nickname}</TextLabel>
-          <TextLabel>{user.address}</TextLabel>
+          <TextLabel F_weight="bold">{user.userName}</TextLabel>
+          <TextLabel>{user.userLocation}</TextLabel>
         </Grids>
       </Grids>
       <Grids>

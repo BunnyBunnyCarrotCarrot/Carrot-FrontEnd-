@@ -38,6 +38,7 @@ const Imageupload = (props) =>{
             }
         }
         
+        
         dispatch(imgActions.setimg(imageUrls));
         
 
@@ -52,9 +53,9 @@ const Imageupload = (props) =>{
         <>
         <Grids is_flex padding="10px">
 
-        <Lab htmlFor="files">
+        <Lab htmlFor="files"onChange={handleAddImgfile} >
             <HiUpload />
-            <Elin type = "file" id="files" accept ='image/*'onChange={handleAddImgfile} multiple="multiple" />
+            <Elin type = "file" id="files" accept ='image/*'multiple="multiple" />
         </Lab>
         
             
