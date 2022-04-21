@@ -56,7 +56,6 @@ const MainCard = (props) => {
           gap="5px"
           width="60%"
         >
-
           <TextLabel padding="10px 10px 0 10px" F_size="35px" >
             {title}
           </TextLabel>
