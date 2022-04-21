@@ -92,7 +92,6 @@ const ItemButton = styled.button`
   border-radius: 40px;
   border: none;
   cursor: pointer;
-
   & :hover {
     animation: ${EditAnimation} 0.2s;
   }
