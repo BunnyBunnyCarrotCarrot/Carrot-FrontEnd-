@@ -16,15 +16,17 @@ import moment from "moment";
 //action
 
 const LOAD_ITEM = "Itemredux/LOAD_ITEM"
+const LOAD_DETAIL = "Itemredux/LOAD_DETAIL"
 const EDIT_ITEM = "Itemredux/EDIT_ITEM"
 const ADD_ITEM =  "Itemredux/ADD_ITEM"
 const DELETE_ITEM = "Itemredux/DELETE_ITEM"
 
 //actioncreators 액션을 만드는애 (액션타입정의, (데이터)=>(데이터)
 const loadItem = createAction(LOAD_ITEM, (list)=>(list));
+const loadDetail = createAction(LOAD_DETAIL, (detail_list)=>(detail_list));
 const editItem = createAction(EDIT_ITEM, (itemId, data)=>({itemId,data}));
 const addItem = createAction(ADD_ITEM,(data)=>({data}));
-const deleteItem = createAction(DELETE_ITEM, (itemId)=>({itemId}));
+const deleteItem = createAction(DELETE_ITEM, (list)=>({list}));
 
 //initialState
 const initialState = {
@@ -60,24 +62,21 @@ const loaditemDB = () =>{
         apis
         .itemsLoad()
         .then((res)=>{
-            dispatch(loadItem(res.data))
-            console.log(res);
+            dispatch(loadItem(res.data));
         })
         .catch((err)=> {
             console.log('로드에러!')
         })
     };
 }
-const DetailItemDB = (itemId) =>{
-
-    console.log(itemId);
-       
+const DetailLoadDB = (itemId) =>{  
     return function(dispatch, getstate,{history}) {
+        console.log(itemId);
         apis
         .itemIdLoad(itemId)
         .then((res) =>{
             console.log(res.data);
-            dispatch(loadItem([res.data]));
+            dispatch(loadDetail((res.data)));
         })
         .catch ((error) => {
             console.log('아이템디테일 로드 오류~~')
@@ -164,6 +163,12 @@ export default handleActions(
             draft.list = action.payload;
         }),
 
+        [LOAD_DETAIL]:(state, action) =>
+        produce (state, (draft) =>{
+            draft.list = action.payload;
+            console.log(draft.list);
+        }),
+
         [EDIT_ITEM]:(state, action) =>
         produce (state, (draft)=>{
             const itemId = action.payload.itemId;
@@ -197,7 +202,7 @@ export default handleActions(
 
 const ItemActions = {
     loaditemDB,
-    DetailItemDB,
+    DetailLoadDB,
     addItemDB,
     EditItemDB,
     DeleteItemDB,

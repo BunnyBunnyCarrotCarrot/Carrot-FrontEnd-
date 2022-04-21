@@ -43,7 +43,7 @@ const apis = {
 	edit: (itemId, data) => instance.put(`api/item/${itemId}/update`, data),
 	del: (itemId) => instance.delete(`api/item/${itemId}`),
 	itemsLoad: () => instance.get('/api/main'),
-	itemIdLoad: (itemId) => instance.get(`/api/item/${itemId}`),
+	itemIdLoad: (itemId) => instance.get(`/api/item/${itemId}/details`),
 };
 
   
