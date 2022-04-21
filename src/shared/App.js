@@ -27,11 +27,14 @@ import { history } from "../redux/configStore";
 
 function App() {
   const dispatch = useDispatch();
-  // const user = useSelector(state => state.user.userInfo);
-  // console.log(user)
+  
+  const user = useSelector(state => state.user.userInfo);
+  console.log(user)
+
   React.useEffect(()=>{
     dispatch(userActions.loginCheckDB());
   },[])
+
 
   return (
     <React.Fragment>

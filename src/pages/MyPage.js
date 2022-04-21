@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Grids, TextLabel } from "../elements/Index";
-import profile from "../images/profile.jpeg";
+import { Grids, TextLabel, Button } from "../elements/Index";
 import pay from "../images/pay.jpeg";
 import sellIcon from "../images/sellIcon.jpeg";
 import buyIcon from "../images/buyIcon.jpeg";
@@ -9,9 +8,14 @@ import likeIcon from "../images/likeIcon.jpeg";
 import Header from "../shared/Header";
 import { IoChevronForwardOutline, IoPencil } from "react-icons/io5";
 import { history } from "../redux/configStore";
+import { useSelector } from "react-redux";
 import Footer from "../shared/Footer";
 
 const MyPage = (props) => {
+
+  const user = useSelector(state => state.user.userInfo);
+  console.log(user)
+
   return (
     <Grids>
       <Header title="나의 당근" />
@@ -25,7 +29,7 @@ const MyPage = (props) => {
       >
         <Grids is_flex gap="20px" postion="relative">
           <ProfileOuter>
-            <Profile src={profile} />
+            <Profile src={user.imgUrl} />
           </ProfileOuter>
           <Grids
             is_flex
@@ -34,17 +38,18 @@ const MyPage = (props) => {
             gap="10px"
           >
             <TextLabel F_size="17px" F_weight="bold">
-              godgooddog
+              {user.userName}
             </TextLabel>
             <TextLabel F_color="#4D5159" F_weight="500">
-              노원구 상계동
+            {user.userLocation}
             </TextLabel>
           </Grids>
         </Grids>
-
-        <Grids>
-          <IoChevronForwardOutline />
-        </Grids>
+        <Button Border="none" BG_color="white">  
+          <Grids>
+            <IoChevronForwardOutline />
+          </Grids>
+        </Button>
       </Grids>
       <Grids
         Border="2px dashed #FF7E36"
@@ -124,7 +129,7 @@ const Profile = styled.div`
   overflow: hidden;
   background-image: url("${(props) => props.src}");
   background-size: cover;
-  border-radius: 40px;
+  border-radius: 30px;
 `;
 
 const PayImage = styled.img`

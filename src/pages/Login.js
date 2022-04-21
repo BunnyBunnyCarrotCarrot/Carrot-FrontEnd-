@@ -17,12 +17,13 @@ const Login = (props) => {
       window.alert('공란이 있습니다.');
       return;
     }
-    // 최소 8자 이상
-    if( id.length <= 3 || id.length > 15 ){
+    // 최소 4자 이상, 최대 15자
+    if( id.length <= 3 || id.length >= 16 ){
       window.alert('아이디는 최소 4자, 최대 15자입니다.');
       return;
     }
-    if( pwd.length <= 5 || pwd.length > 15 ){
+    // 최소 6자 이상, 최대 15자
+    if( pwd.length <= 5 || pwd.length >= 16 ){
       window.alert('비밀번호는 최소 6자, 최대 15자입니다.');
       return;
     }
