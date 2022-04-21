@@ -6,46 +6,48 @@ import DetailFooter from "../components/DetailFooter";
 import DetailSlider from "../components/DetailSlider";
 import { useSelector, useDispatch } from "react-redux";
 import { ItemActions } from "../redux/modules/Itemredux";
+import { useParams } from "react-router-dom";
 
 const Detail = (props) => {
   const dispatch = useDispatch();
-  const itemId = props.match.params.itemid;
+  const params = useParams();
+  const itemId = props.match.params.itemId;
 
-  const itemList = useSelector((state) => state.item.list);
-
-  console.log(itemList);
+  React.useEffect(()=>{
+    dispatch(ItemActions.DetailLoadDB(itemId))
+  },[])
   
-    const itemIdx = itemList.findIndex((el) => el.itemId === parseInt(itemId));
-    console.log(itemIdx);
-    // //   let item = itemList[];
+  const itemList = useSelector((state) => state.item);
+  console.log(itemList);
+  const itemIdx = itemList.list.findIndex((el) => el.itemId === parseInt(itemId));
+  let item = itemList[itemIdx];
 
-//   React.useEffect(() => {
-//     if (item) {
-//       return;
-//     }
-//     dispatch(ItemActions.DeleteItemDB(props.itemId));
-//   });
+  React.useEffect(() => {
+    if (item) {
+      return;
+    }
+    dispatch(ItemActions.DetailLoadDB(itemId));
+  });
 
-//   const postData = {
-//     title: item?.title,
-//     content: post?.content,
-//     category: post?.category,
-//     likeCnt: post?.likeCnt,
-//     viewCnt: post?.viewCnt,
-//   };
+  const itemData = {
+    title: itemList.title,
+    content: itemList.about,
+    category: itemList.categoryName,
+    likeCnt: itemList.likeCount,
+  };
 
   return (
-      <></>
-    // <React.Fragment>
-    //   {post && (
-    //     <Grids>
-    //       <DetailSlider image={post.image} />
-    //       <DetailUserCard user={post.user} />
-    //       <DetailContentCard {...postData} />
-    //       <DetailFooter price={post.price} postId={post.postId} />
-    //     </Grids>
-    //   )}
-    // </React.Fragment>
+    <React.Fragment>
+        <Grids>
+        
+        
+          <DetailSlider image={itemList.list.imageUrls} />
+          <DetailUserCard user={itemList.list.userName} />
+          <DetailContentCard {...itemData} />
+          <DetailFooter price={itemList.list.price} itemId={itemList.list.itemId} />
+        </Grids>
+        
+    </React.Fragment>
   );
 };
 

@@ -46,7 +46,7 @@ function App() {
           {/* 게시글 */}
           <Route path="/Item" exact component={Item} />
             {/* <Route path="/edit/:postid" exact component={Edit} /> */}
-          <Route path="/item/detail/:postid" exact component={Detail} />
+          <Route path="/item/:itemId/details" exact component={Detail} />
           {/* <Route path="/chat" exact component={Chat} /> */}
 
           {/* 내정보 */}

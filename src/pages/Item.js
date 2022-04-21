@@ -54,7 +54,7 @@ const Item = (props) =>{
                 categoryId,
                 imageList
                 ));
-            history.push("/main");
+            
     };
     
     return(

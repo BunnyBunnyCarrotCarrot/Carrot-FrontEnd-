@@ -5,7 +5,7 @@ import Rate from "../components/Rate";
 const DetailUserCard = (props) => {
   const { user } = props;
 
-  console.log(user);
+  console.log(props);
   return (
     <Grids
       B_bottom="1px solid rgba(0,0,0,0.1)"

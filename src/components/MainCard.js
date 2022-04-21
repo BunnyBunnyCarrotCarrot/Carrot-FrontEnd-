@@ -47,7 +47,7 @@ const MainCard = (props) => {
         align_items="flex-start"
         position="relative"
       >
-        <Grids width="28%" _onClick={() => history.push("item/detail/" + itemId)}>
+        <Grids width="28%" _onClick={() => history.push(`item/${itemId}/details`)}>
           <AspectInner src={imageUrls[0]} />
         </Grids>
         <Grids
