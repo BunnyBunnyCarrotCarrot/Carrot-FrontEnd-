@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Carrot(Front-End)
+항해 99 6기 A반 CloneCoding 9조
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🧑🏻‍💻 제작 기간 및 팀원 소개
+기간 : 2022 - 04 - 15 ~ 2022 - 04 - 21   
 
-## Available Scripts
 
-In the project directory, you can run:
+Frontend(React) : 
 
-### `yarn start`
+    김주탁 : 회원가입, 로그인, 마이페이지
+    김예림 : 전체리스트, 작성, 수정, 삭제
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend(Spring)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    김호빈 : 회원가입, 로그인, JWT, 마이페이지
+    박지연 : 게시글 작성, 수정, 삭제
+    김일권 : 전체 리스트, 좋아요
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠 사용 기술
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- Redux
+- S3
+- Styled Components
+- GitHub
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Notion Postman
+https://flicker-homegrown-973.notion.site/99-A-9-15c6f4681ed24f809d5ded127bb015bc'
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 시연영상
+https://www.youtube.com/watch?v=3zetlJRwlXU
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ERD
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![image](https://user-images.githubusercontent.com/40729223/163559551-63e23079-b878-4db2-913e-a997891bac3d.png)
